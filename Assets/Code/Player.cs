@@ -15,7 +15,7 @@ namespace RollaBall
             private float _moveHorizontal;
             private float _moveVertical;
             private bool _isWalking;
-            private Code.Bonuses deleg;
+            private global::Code.Bonuses deleg;
             private FlagInterection flag;
 
             public Action<float> DelegChangeSpeed;
@@ -26,7 +26,7 @@ namespace RollaBall
 
             private void Start()
             {
-                deleg = FindObjectOfType<Code.Bonuses>();
+                deleg = FindObjectOfType<global::Code.Bonuses>();
                 bool _isRigidBody = TryGetComponent<Rigidbody>(out _rigidbody);
                 if (!_isRigidBody)
                 {
