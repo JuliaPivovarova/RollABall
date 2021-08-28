@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using RollaBall.Bonuses;
-using RollaBall.Player;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -15,10 +13,13 @@ namespace Code
         [SerializeField] private GameObject[] goodBonuses;
         [SerializeField] private GameObject[] badBonuses;
 
-        private GameObject[] cloneGoodBonuses;
+        private static GameObject[] cloneGoodBonuses;
         private GameObject[] cloneBadBonuses;
 
-        private Player _player;
+        public static GameObject[] ClGB => cloneGoodBonuses;
+        public GameObject[] ClBB => cloneBadBonuses;
+
+        private RollaBall.Player.Player _player;
         private FlagInterection _flag;
         private Collider coll;
 
@@ -43,7 +44,7 @@ namespace Code
             Clone(spawnGoodBonuses, goodBonuses, cloneGoodBonuses);
             Clone(spawnBadBonuses, badBonuses, cloneBadBonuses);
             
-            _player = FindObjectOfType<Player>();
+            _player = FindObjectOfType<RollaBall.Player.Player>();
 
             _player._bonusesEventAddSp += NotActiveCloneBonuses;
             _player._bonusesEventLowerSp += NotActiveCloneBonuses;
