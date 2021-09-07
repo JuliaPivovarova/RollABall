@@ -9,6 +9,7 @@ namespace Code
         private Transform _player;
         private Vector3 _offset;
 
+        public CameraMove(){}
         public CameraMove(Transform player, Transform camera)
         {
             _player = player;

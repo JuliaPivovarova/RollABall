@@ -13,7 +13,7 @@ public class MarkerFastSpeedPPr : MonoBehaviour
     private void Start()
     {
         _player = FindObjectOfType<Player>();
-        _player._bonusesEventAddSp += AddPP;
+        //_player._bonusesEventAddSp += AddPP;
         _exist = TryGetComponent<PostProcessVolume>(out _ppv);
         if (!_exist)
         {
@@ -23,7 +23,7 @@ public class MarkerFastSpeedPPr : MonoBehaviour
 
     private void OnDestroy()
     {
-        _player._bonusesEventAddSp -= AddPP;
+        //_player._bonusesEventAddSp -= AddPP;
     }
 
     private void AddPP(Collider coll)

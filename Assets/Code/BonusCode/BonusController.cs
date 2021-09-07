@@ -4,15 +4,16 @@ namespace Code.BonusCode
 {
     public class BonusController
     {
-        private BonusSpawn _dic;
-
         public void DeleteFromList(Transform bonus)
         {
-            for (int i = 0; i < _dic._bonusList.Count; i++)
+            for (int i = 0; i < BonusSpawn._bonusList.Count; i++)
             {
-                if (_dic._bonusList[i].Position == bonus)
+                if (BonusSpawn.Length[i] != 0 && BonusSpawn._bonusList[i].Position.position == bonus.position)
                 {
-                    _dic._bonusList.Remove(i);
+                    BonusSpawn._bonusList[i].ComplitBonus.SetActive(false);
+                    BonusSpawn._bonusList[i].Interecteble = false;
+                    BonusSpawn._bonusList.Remove(i);
+                    BonusSpawn.Length[i] = 0;
                 }
             }
         }

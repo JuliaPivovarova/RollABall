@@ -8,21 +8,20 @@ namespace Code.Player
     public sealed class PlayerInputController: IExecute
     {
         private readonly PlayerBall _player;
-        private float _speed;
-        private bool _invicible;
-        private bool _isPlayerDead;
+        private static float _speed;
+        private static bool _invicible = false;
+        private static bool _isPlayerDead = false;
 
+        public PlayerInputController(){}
         public PlayerInputController(PlayerBall player, float speed)
         {
             _player = player;
             _speed = speed;
-            _invicible = false;
-            _isPlayerDead = false;
         }
         
         public void Execute()
         {
-            Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+            Vector3 movement = new Vector3(Input.GetAxis("Horizontal") , 0f, Input.GetAxis("Vertical"));
             if (_player.TryGetComponent<Rigidbody>(out var _rigidbody))
             {
                 _rigidbody.AddForce(_speed * movement);

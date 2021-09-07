@@ -13,7 +13,7 @@ public class MarkerLowSpeedPPr : MonoBehaviour
     private void Start()
     {
         _player = FindObjectOfType<Player>();
-        _player._bonusesEventLowerSp += LowPP;
+        //_player._bonusesEventLowerSp += LowPP;
         _exist = TryGetComponent<PostProcessVolume>(out _ppv);
         if (!_exist)
         {
@@ -23,7 +23,7 @@ public class MarkerLowSpeedPPr : MonoBehaviour
 
     private void OnDestroy()
     {
-        _player._bonusesEventLowerSp -= LowPP;
+        //_player._bonusesEventLowerSp -= LowPP;
     }
 
     private void LowPP(Collider coll)
