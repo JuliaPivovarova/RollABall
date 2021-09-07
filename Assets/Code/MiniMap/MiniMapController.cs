@@ -8,6 +8,7 @@ namespace Code.MiniMap
         private readonly Transform _player;
         private readonly Transform _camera;
 
+        public MiniMapController(){}
         public MiniMapController(Transform player, Transform camera)
         {
             _player = player;

@@ -15,18 +15,9 @@ namespace Code.SaveLoad
         private BonusSpawn dic;
         private int[] keysDic;
         private string[] bonusesStr;
-        private BonusToSave b;
-        private DataBonus dataB;
-
-        private int[] GetKeys()
-        {
-            foreach (var pair in dic._bonusList)
-            {
-                keysDic[pair.Key] = pair.Key;
-            }
-
-            return keysDic;
-        }
+        private BonusToSave b = new BonusToSave();
+        private DataBonus dataB = new DataBonus();
+        private static BonusSingleClass bonus = new BonusSingleClass();
 
         private void SetBonuses(string[] bon)
         {
@@ -38,7 +29,7 @@ namespace Code.SaveLoad
                 {
                     if (j == 1)
                     {
-                        pos.x = float.Parse(parts[i]);
+                        pos.x = float.Parse(parts[j]);
                     }
 
                     if (j == 3)
@@ -51,28 +42,28 @@ namespace Code.SaveLoad
                     }
                     if (j == 7)
                     {
-                        dic._bonusList[i].Interecteble = bool.Parse(parts[j]);
+                        BonusSpawn._bonusList[i].Interecteble = bool.Parse(parts[j]);
                     }
                     if (j == 9)
                     {
-                        dic._bonusList[i].Good = bool.Parse(parts[j]);
+                        BonusSpawn._bonusList[i].Good = bool.Parse(parts[j]);
                     }
                     if (j == 11)
                     {
-                        dic._bonusList[i].BonusDo = parts[j];
+                        BonusSpawn._bonusList[i].BonusDo = parts[j];
                     }
-                    dic._bonusList[i].Position.position = pos;
+                    BonusSpawn._bonusList[i].Position.position = pos;
 
-                    if (dic._bonusList[i].Good)
+                    if (BonusSpawn._bonusList[i].Good)
                     {
                         for (int k = 0; k < dataB.BonG.Length; k++)
                         {
-                            if (dataB.BonG[k].BonusDo.Equals(dic._bonusList[i].BonusDo))
+                            if (dataB.BonG[k].BonusDo.Equals(BonusSpawn._bonusList[i].BonusDo))
                             {
-                                dic._bonusList[i].ComplitBonus = dataB.BonG[k].ComplitBonus;
-                                dic._bonusList[i].BasicForm = dataB.BonG[k].BasicForm;
-                                dic._bonusList[i].Material = dataB.BonG[k].Material;
-                                dic._bonusList[i].ComplitBonus = dataB.BonG[k].ComplitBonus;
+                                BonusSpawn._bonusList[i].ComplitBonus = dataB.BonG[k].ComplitBonus;
+                                BonusSpawn._bonusList[i].BasicForm = dataB.BonG[k].BasicForm;
+                                BonusSpawn._bonusList[i].Material = dataB.BonG[k].Material;
+                                BonusSpawn._bonusList[i].ComplitBonus = dataB.BonG[k].ComplitBonus;
                             }
                         }
                     }
@@ -80,12 +71,12 @@ namespace Code.SaveLoad
                     {
                         for (int k = 0; k < dataB.BonB.Length; k++)
                         {
-                            if (dataB.BonB[k].BonusDo.Equals(dic._bonusList[i].BonusDo))
+                            if (dataB.BonB[k].BonusDo.Equals(BonusSpawn._bonusList[i].BonusDo))
                             {
-                                dic._bonusList[i].ComplitBonus = dataB.BonB[k].ComplitBonus;
-                                dic._bonusList[i].BasicForm = dataB.BonB[k].BasicForm;
-                                dic._bonusList[i].Material = dataB.BonB[k].Material;
-                                dic._bonusList[i].ComplitBonus = dataB.BonB[k].ComplitBonus;
+                                BonusSpawn._bonusList[i].ComplitBonus = dataB.BonB[k].ComplitBonus;
+                                BonusSpawn._bonusList[i].BasicForm = dataB.BonB[k].BasicForm;
+                                BonusSpawn._bonusList[i].Material = dataB.BonB[k].Material;
+                                BonusSpawn._bonusList[i].ComplitBonus = dataB.BonB[k].ComplitBonus;
                             }
                         }
                     }
@@ -95,8 +86,8 @@ namespace Code.SaveLoad
 
         private string[] GetBonuses()
         {
-            BonusSingleClass bonus;
-            foreach (var pair in dic._bonusList)
+            bonusesStr = new string[dataB.SpawnPointsG().Length + dataB.SpawnPointsB().Length];
+            foreach (var pair in BonusSpawn._bonusList)
             {
                 bonus = pair.Value;
                 bonusesStr[pair.Key] = b.ToSave(bonus);
@@ -124,15 +115,13 @@ namespace Code.SaveLoad
             {
                 Directory.CreateDirectory(_path);
             }
-
-            int[] keyd = GetKeys();
+            
             string[] bon = GetBonuses();
             var savePlayer = new SavedData
             {
                 Position = player.transform.position,
                 Name = "Julia",
                 IsEnabled = true,
-                KeyDictionary = keyd,
                 Bonus = bon
             };
 

@@ -7,13 +7,13 @@ namespace Code.BonusCode
     [Serializable]
     public class BonusSingleClass
     {
-        public GameObject BasicForm;
-        public Transform Position;
-        public Material Material;
-        public bool Interecteble;
+        public GameObject BasicForm = null;
+        public Transform Position = null;
+        public Material Material = null;
+        public bool Interecteble = true;
         public bool Good;
-        public string BonusDo;
-        public GameObject ComplitBonus;
+        public string BonusDo = "";
+        public GameObject ComplitBonus = null;
 
         public GameObject ConstructBonus()
         {

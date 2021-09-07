@@ -11,6 +11,7 @@ namespace Code
         private readonly InputData _inputData;
         private readonly ISaveDataRepository _saveDataRepository;
 
+        public InputController(){}
         public InputController(PlayerBall player, InputData inputData)
         {
             _player = player;

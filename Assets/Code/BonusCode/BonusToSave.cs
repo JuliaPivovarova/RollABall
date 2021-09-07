@@ -4,10 +4,10 @@ namespace Code.BonusCode
 {
     public class BonusToSave: BonusSingleClass
     {
-        public Transform position;
-        public bool _interctible;
-        public bool _good;
-        public string _bDo;
+        private static Transform position;
+        private static bool _interctible;
+        private static bool _good;
+        private static string _bDo;
         public string ToSave(BonusSingleClass bonus)
         {
             position = bonus.Position;

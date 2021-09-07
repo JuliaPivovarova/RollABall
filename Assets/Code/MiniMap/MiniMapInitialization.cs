@@ -7,6 +7,7 @@ namespace Code.MiniMap
         private readonly Transform _player;
         private readonly Transform _camera;
 
+        public MiniMapInitialization(){}
         public MiniMapInitialization(Transform player, Transform camera)
         {
             _player = player;
