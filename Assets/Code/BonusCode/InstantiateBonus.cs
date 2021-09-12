@@ -2,13 +2,13 @@
 
 namespace Code.BonusCode
 {
-    public class InstantiateBonus: MonoBehaviour
+    public class InstantiateBonus
     {
-        private static GameObject newOgj;
-        public static GameObject InstBon(GameObject parentObj, Transform _position)
+        private static GameObject _newOgj;
+        public static GameObject InstBon(GameObject parentObj, Transform position)
         {
-            newOgj = GameObject.Instantiate(parentObj, _position.position, _position.rotation);
-            return newOgj;
+            _newOgj = GameObject.Instantiate(parentObj, position.position, position.rotation);
+            return _newOgj;
         }
     }
 }

@@ -30,7 +30,6 @@ namespace Code.BonusCode
                 }
                 ComplitBonus.transform.position = Position.position;
                 ComplitBonus.transform.rotation = Position.rotation;
-                ComplitBonus.AddComponent<FlagInterection>();
             }
             else
             {
@@ -55,7 +54,6 @@ namespace Code.BonusCode
                 }
                 ComplitBonus.transform.position = Position.position;
                 ComplitBonus.transform.rotation = Position.rotation;
-                ComplitBonus.AddComponent<FlagInterection>();
             }
             else
             {
@@ -80,7 +78,6 @@ namespace Code.BonusCode
                 }
                 ComplitBonus.transform.position = pos.position;
                 ComplitBonus.transform.rotation = pos.rotation;
-                ComplitBonus.AddComponent<FlagInterection>();
             }
             else
             {
