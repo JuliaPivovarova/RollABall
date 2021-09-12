@@ -1,22 +1,26 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using RollaBall.Player;
+using Code.Player.Player;
+using Code.UI;
 using UnityEngine;
 
-public class CollectebleJustOne : MonoBehaviour
+namespace Code
 {
-    private void Start()
+    public class CollectebleJustOne : MonoBehaviour
     {
-        gameObject.SetActive(true);
-    }
-
-    private void OnTriggerEnter(Collider other)
+        private UICollecteblesSlider _uiCollecteblesSlider;
+        
+        private void Start()
         {
-            if (other.TryGetComponent<PlayerBall>(out var pl) || gameObject.activeInHierarchy)
+            gameObject.SetActive(true);
+            _uiCollecteblesSlider = new UICollecteblesSlider();
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.TryGetComponent<PlayerBall>(out _) && gameObject.activeInHierarchy)
             {
-                Collectebles._numberCollectebles++;
+                _uiCollecteblesSlider.AddCollecteble();
                 gameObject.SetActive(false);
             }
         }
+    }
 }

@@ -1,6 +1,8 @@
 ﻿using System.Data;
 using System.IO;
 using Code.BonusCode;
+using Code.Interfaces_and_Markers;
+using Code.Player.Player;
 using UnityEngine;
 
 namespace Code.SaveLoad
@@ -109,7 +111,7 @@ namespace Code.SaveLoad
             _path = Path.Combine(Application.dataPath, _folderName);
         }
 
-        public void Save(RollaBall.Player.PlayerBall player)
+        public void Save(PlayerBall player)
         {
             if (!Directory.Exists(Path.Combine(_path)))
             {
@@ -129,7 +131,7 @@ namespace Code.SaveLoad
             Debug.Log("Save");
         }
 
-        public void Load(RollaBall.Player.PlayerBall player)
+        public void Load(PlayerBall player)
         {
             var file = Path.Combine(_path, _fileName);
             if (!File.Exists(file))
